@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "corpai"
-version = "0.4.0"
+version = "0.4.1"
 description = "CLI validator and tooling for the CorpAI open standard"
 readme = "README.md"
 license = { text = "MIT" }
