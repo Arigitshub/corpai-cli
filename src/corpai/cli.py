@@ -290,6 +290,57 @@ def info(
 
 
 # ─────────────────────────────────────────────────────────
+# corpai init
+# ─────────────────────────────────────────────────────────
+
+@app.command()
+def init(
+    path: Path = typer.Argument(Path.cwd(), help="Path to initialize the CorpAI org"),
+    force: bool = typer.Option(False, "--force", "-f", help="Force initialization without confirmation"),
+):
+    """
+    [bold]Initialize a new CorpAI org structure.[/bold]
+
+    Creates the recommended directory layout (roles/, spec/) and initial roles.
+    """
+    from .scaffold import init_org
+    
+    if path.exists() and any(path.iterdir()) and not force:
+        if not typer.confirm(f"The directory {path} is not empty. Continue?", default=False):
+            raise typer.Abort()
+            
+    try:
+        init_org(path)
+        console.print(f"[green]✓[/green] Successfully initialized CorpAI org in {path}")
+    except Exception as e:
+        err_console.print(f"[red]Error:[/red] {e}")
+        raise typer.Exit(1)
+
+@app.command()
+def new_role(
+    title: str = typer.Argument(..., help="Title of the new role (e.g. 'Senior Architect')"),
+    dept: str = typer.Option(..., "--dept", "-d", help="Department for the new role"),
+    rank: str = typer.Option("L1", "--rank", "-r", help="Rank level [L1–L5]"),
+    path: Optional[Path] = typer.Argument(None, help="Path to CorpAI roles/ directory"),
+):
+    """
+    [bold]Generate a new role file from a template.[/bold]
+
+    Creates a new .md role file in the correct department subdirectory.
+    """
+    from .scaffold import create_role
+    
+    roles_dir = _resolve_roles_dir(path)
+    
+    try:
+        file_path = create_role(roles_dir, title, dept, rank)
+        console.print(f"[green]✓[/green] Created new role: {file_path}")
+    except Exception as e:
+        err_console.print(f"[red]Error:[/red] {e}")
+        raise typer.Exit(1)
+
+
+# ─────────────────────────────────────────────────────────
 # corpai version
 # ─────────────────────────────────────────────────────────
 
