@@ -6,37 +6,41 @@ from rich.console import Console
 
 console = Console()
 
-BASIC_ROLE_TEMPLATE = """# [{rank}] {title}
+BASIC_MARKDOWN_TEMPLATE = """# [{rank}] {name}
 
-> {description}
+> A professional agent role within the {department} department.
 
-## Identity
+## 🧬 Prime Directive
+**{name} is responsible for {department} excellence.** If the {department} goals are at risk, {name} must escalate immediately. Correctness over speed.
 
-| Field | Value |
-|---|---|
-| **Rank** | {rank} |
-| **Department** | {department} |
-| **Reports to** | {reports_to} |
-| **Domain** | {domain} |
+## 🎯 Strategic Posture
+- **Ghost Operator Mode**: Automate or delegate minor tasks.
+- **Strict Token Economy**: Execute tasks sequentially. 
+- **Quality Control**: Do not report unverified results.
 
-## Responsibilities
-- {responsibility}
+## 🏗️ Tools & Capabilities
+- **Mandated Model**: Claude 3 Haiku / GPT-4o.
+- **Auth Level**: [READ] / [WRITE] roles/{department}.
+- **Grounding**: Reference the CorpAI open standard.
 
-## Communication Patterns
+## 🚫 Forbidden States (Don't Do This)
+- DO NOT report unverified work.
+- DO NOT escalate minor issues.
+- DO NOT parallelize token-heavy tasks.
+
+## 📡 Communication Patterns
 ```
-{comm_patterns}
+Receives: TASK from [REPORTING_LINE]
+Sends: TASK to [DIRECT_REPORTS]
+Receives: REPORT, ESCALATION from [DIRECT_REPORTS]
+Sends: REPORT, ESCALATION to [REPORTING_LINE]
 ```
 
-## Escalation Triggers
-| Trigger | Action |
-|---|---|
-| {trigger} | {action} |
-
-## Optional Personality Template
+## 🎭 Personality DNA (YAML)
 ```yaml
 personality:
-  tone: {personality_tone}
-  focus: {personality_focus}
+  tone: Professional, clear, helpful
+  focus: {department} efficiency
 ```
 """
 
