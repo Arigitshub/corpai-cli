@@ -5,6 +5,7 @@
 > The official CLI for the [CorpAI open standard](https://github.com/Arigitshub/CorpAI) — validate, visualize, and simulate your AI agent org.
 
 [![PyPI version](https://img.shields.io/pypi/v/corpai?style=flat-square)](https://pypi.org/project/corpai/)
+[![Website](https://img.shields.io/badge/Portal-VOS--Live-blue?style=flat-square)](https://corpai-standard-vos.surge.sh)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue?style=flat-square)](https://pypi.org/project/corpai/)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](LICENSE)
 [![CorpAI Compatible](https://img.shields.io/badge/CorpAI-Compatible-0a0a0a?style=flat-square)](https://github.com/Arigitshub/CorpAI)
