@@ -84,6 +84,34 @@ def init_org(path: Path):
     return True
 
 
+def recruit_agent(name: str, department: str, rank: str = "L2"):
+    """
+    Recruit a new 'Soul-Compliant' agent with a v2.0 template.
+    """
+    roles_dir = Path("roles") / department
+    roles_dir.mkdir(parents=True, exist_ok=True)
+    
+    file_name = name.lower().replace(" ", "-") + ".md"
+    file_path = roles_dir / file_name
+    
+    # Model Mapping (The 'SOTA' touch)
+    model = "Claude 3 Haiku" if department in ["sales", "marketing", "customer-success"] else \
+            "GPT-4o" if department in ["engineering", "product", "data-ai"] else \
+            "Claude 3 Opus"
+    
+    content = BASIC_MARKDOWN_TEMPLATE.format(
+        name=name,
+        department=department,
+        rank=rank,
+        model=model
+    )
+    
+    with open(file_path, "w", encoding="utf-8") as f:
+        f.write(content)
+        
+    return str(file_path)
+
+
 def create_role(roles_dir: Path, title: str, dept: str, rank: str) -> Path:
     """Create a single role file in a department directory."""
     dept_dir = roles_dir / dept.lower().replace(" ", "-")

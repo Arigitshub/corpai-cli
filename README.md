@@ -30,6 +30,10 @@ Checks every role `.md` file against the CorpAI spec:
 - Empty fields and template placeholders
 - Broken reporting chains (reports-to role doesn't exist)
 - Missing escalation triggers
+- **Recruitment Engine**: Use `corpai recruit` to instantly spawn v2.0 'Soul-Compliant' agents with Prime Directives and Tool Mandates.
+- **Spec Validation**: Ensure your agent org follows the 1.x/2.x standard with `corpai lint`.
+- **Zero-Friction Scaffolding**: Bootstrap a full department hierarchy with `corpai init`.
+- **Org Visualization**: Generate Mermaid diagrams for your agent structure with `corpai graph`.
 
 ```bash
 # Lint entire org
