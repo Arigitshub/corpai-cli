@@ -1,5 +1,7 @@
 # corpai-cli
 
+![CorpAI Hero](assets/hero.png)
+
 > The official CLI for the [CorpAI open standard](https://github.com/Arigitshub/CorpAI) — validate, visualize, and simulate your AI agent org.
 
 [![PyPI version](https://img.shields.io/pypi/v/corpai?style=flat-square)](https://pypi.org/project/corpai/)
